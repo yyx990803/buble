@@ -106,8 +106,13 @@ module.exports = [
 			var a = 'foo', obj = { [a]: 'bar', x: 42 }, bar = obj.foo;`,
 
 		output: `
+<<<<<<< a158f9449680b06be4032598b7404a1e93ed6998
 			var a = 'foo', obj = ( obj$1 = { x: 42 }, obj$1[a] = 'bar', obj$1 ), bar = obj.foo;
 			var obj$1;`
+=======
+			var _obj;
+			var a = 'foo', obj = ( _obj = { x: 42 }, _obj[a] = 'bar', _obj ), bar = obj.foo;`
+>>>>>>> rename obj to _obj for computed properties
 	},
 
 	{
@@ -138,8 +143,8 @@ module.exports = [
 			call({ [a]: 5 });`,
 
 		output: `
-			call(( obj = {}, obj[a] = 5, obj ));
-			var obj;`
+			var _obj;
+			call(( _obj = {}, _obj[a] = 5, _obj ));`
 	},
 
 	{

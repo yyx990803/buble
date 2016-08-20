@@ -78,7 +78,7 @@ export default class ObjectExpression extends Node {
 			if ( isSimpleAssignment ) {
 				// ???
 			} else {
-				name = this.findScope( true ).createIdentifier( 'obj' );
+				name = this.findScope( true ).createIdentifier( '_obj' );
 
 				const statement = this.findNearest( /(?:Statement|Declaration)$/ );
 				code.insertLeft( statement.end, `\n${i0}var ${name};` );
