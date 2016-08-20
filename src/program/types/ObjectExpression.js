@@ -131,7 +131,7 @@ export default class ObjectExpression extends Node {
 					firstSpreadProperty === null ||
 					firstComputedProperty < firstSpreadProperty
 				) {
-					name = this.findScope(true).createDeclaration('obj');
+					name = this.findScope(true).createDeclaration('_obj');
 
 					code.prependRight(this.start, `( ${name} = `);
 				} else name = null; // We don't actually need this variable

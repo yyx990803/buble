@@ -136,9 +136,9 @@ module.exports = [
 			var a = 'foo', obj = { [a]: 'bar', x: 42 }, bar = obj.foo;`,
 
 		output: `
-			var obj$1;
+			var _obj$1;
 
-			var a = 'foo', obj = ( obj$1 = {}, obj$1[a] = 'bar', obj$1.x = 42, obj$1 ), bar = obj.foo;`
+			var a = 'foo', obj = ( _obj$1 = {}, _obj$1[a] = 'bar', _obj$1.x = 42, _obj$1 ), bar = obj.foo;`
 	},
 
 	{
@@ -169,9 +169,14 @@ module.exports = [
 			call({ [a]: 5 });`,
 
 		output: `
+<<<<<<< HEAD
 			var obj;
 
 			call(( obj = {}, obj[a] = 5, obj ));`
+=======
+			var _obj;
+			call(( _obj = {}, _obj[a] = 5, _obj ));`
+>>>>>>> rename obj to _obj for computed properties
 	},
 
 	{
