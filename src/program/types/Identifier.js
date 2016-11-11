@@ -1,6 +1,7 @@
 import Node from '../Node.js';
 import isReference from '../../utils/isReference.js';
 import { loopStatement } from '../../utils/patterns.js';
+import globals from '../../utils/globals.js';
 
 const isDeclaration = type => /Declaration$/.test(type)
 const isFunction = type => /Function(Expression|Declaration)$/.test(type)
@@ -54,8 +55,8 @@ export default class Identifier extends Node {
 			!(this.parent.type === 'Property' && this.parent.key === this && !this.parent.computed) &&
 			// not a property of a MemberExpression
 			!(this.parent.type === 'MemberExpression' && this.parent.property === this) &&
-			// skip commonly used shorthands optimized for access perf
-			!/^(_h|_s)$/.test(this.name) &&
+			// skip globals + commonly used shorthands
+			!globals[this.name] &&
 			// not already in scope
 			!this.findScope(false).contains(this.name)
 		) {

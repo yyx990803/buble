@@ -1,11 +1,12 @@
 import Node from '../Node.js';
 import reserved from '../../utils/reserved.js';
+import globals from '../../utils/globals.js'
 
 export default class Property extends Node {
 	transpile ( code, transforms ) {
 		if ( transforms.conciseMethodProperty && !this.computed && this.parent.type !== 'ObjectPattern' ) {
 			if ( this.shorthand ) {
-				code.insertRight( this.start, `${this.key.name}: ${this.program.inWith ? '_vm.' : ''}` );
+				code.insertRight( this.start, `${this.key.name}: ${(this.program.inWith && !globals[this.key.name]) ? '_vm.' : ''}` );
 			} else if ( this.method ) {
 				let name = '';
 				if ( this.program.options.namedFunctionExpressions !== false ) {
