@@ -48,6 +48,7 @@ export function target(target) {
 		transforms[name] = false;
 	});
 
+	transforms.stripWith = false
 	return transforms;
 }
 
@@ -59,7 +60,7 @@ export function transform(source, options = {}) {
 		ast = parse(source, {
 			ecmaVersion: 9,
 			preserveParens: true,
-			sourceType: 'module',
+			sourceType: 'script',
 			onComment: (block, text) => {
 				if (!jsx) {
 					let match = /@jsx\s+([^\s]+)/.exec(text);
