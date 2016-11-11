@@ -6,7 +6,7 @@ export default class Property extends Node {
 	transpile ( code, transforms ) {
 		if ( transforms.conciseMethodProperty && !this.computed && this.parent.type !== 'ObjectPattern' ) {
 			if ( this.shorthand ) {
-				code.insertRight( this.start, `${this.key.name}: ${(this.program.inWith && !globals[this.key.name]) ? '_vm.' : ''}` );
+				code.insertRight( this.start, `${this.key.name}: ${this.shouldPrefix() ? '_vm.' : ''}` );
 			} else if ( this.method ) {
 				let name = '';
 				if ( this.program.options.namedFunctionExpressions !== false ) {
@@ -37,5 +37,16 @@ export default class Property extends Node {
 		}
 
 		super.transpile( code, transforms );
+	}
+
+	shouldPrefix () {
+		if (
+			this.program.inWith &&
+			!globals[this.key.name] &&
+			!this.findScope(false).contains(this.key.name)
+		) {
+			return true
+		}
+		return false
 	}
 }
