@@ -107,9 +107,17 @@ module.exports = [
 			var obj, obj$1;
 
 			if (1)
+<<<<<<< HEAD
 				{ console.log(JSON.stringify(( obj = {}, obj['com'+'puted'] = 1, obj['foo'] = 2, obj ))); }
 			else
 				{ console.log(JSON.stringify(( obj$1 = {}, obj$1['bar'] = 3, obj$1 ))); }
+=======
+				{ var _obj;
+					console.log(JSON.stringify(( _obj = {}, _obj['com'+'puted'] = 1, _obj['foo'] = 2, _obj ))); }
+			else
+				{ var _obj$1;
+			console.log(JSON.stringify(( _obj$1 = {}, _obj$1['bar'] = 3, _obj$1 ))); }
+>>>>>>> fix tests
 		`
 	},
 
