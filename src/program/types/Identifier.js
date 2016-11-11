@@ -2,6 +2,9 @@ import Node from '../Node.js';
 import isReference from '../../utils/isReference.js';
 import { loopStatement } from '../../utils/patterns.js';
 
+const isDeclaration = type => /Declaration$/.test(type)
+const isFunction = type => /Function(Expression|Declaration)$/.test(type)
+
 export default class Identifier extends Node {
 	findScope ( functionScope ) {
 		if ( this.parent.params && ~this.parent.params.indexOf( this ) ) {
@@ -35,9 +38,26 @@ export default class Identifier extends Node {
 		}
 	}
 
-	transpile ( code ) {
+	transpile ( code, transforms ) {
 		if ( this.alias ) {
 			code.overwrite( this.start, this.end, this.alias, true );
+		}
+
+		// rewrite identifiers inside Vue render function `with` blocks
+		if (
+			transforms.stripWith &&
+			// not id of a Declaration
+			!(isDeclaration(this.parent.type) && this.parent.id === this) &&
+			// not a params of a function
+			!(isFunction(this.parent.type) && this.parent.params.indexOf(this) > -1) &&
+			// not a key of Property
+			!(this.parent.type === 'Property' && this.parent.key === this) &&
+			// not a property of a MemberExpression
+			!(this.parent.type === 'MemberExpression' && this.parent.property === this) &&
+			// not already in scope
+			!this.findScope(false).contains(this.name)
+		) {
+			code.insertRight(this.start, `$$vm.`)
 		}
 	}
 }
