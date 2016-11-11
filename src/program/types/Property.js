@@ -1,5 +1,6 @@
 import Node from '../Node.js';
 import reserved from '../../utils/reserved.js';
+import globals from '../../utils/globals.js'
 
 export default class Property extends Node {
 	transpile(code, transforms) {
@@ -11,7 +12,7 @@ export default class Property extends Node {
 			this.parent.type !== 'ObjectPattern'
 		) {
 			if (this.shorthand) {
-				code.prependRight(this.start, `${this.key.name}: ${this.program.inWith ? '_vm.' : ''}`);
+				code.prependRight(this.start, `${this.key.name}: ${(this.program.inWith && !globals[this.key.name]) ? '_vm.' : ''}`);
 			} else if (this.method) {
 				let name = '';
 				if (this.program.options.namedFunctionExpressions !== false) {
