@@ -11,7 +11,7 @@ export default class Property extends Node {
 			this.parent.type !== 'ObjectPattern'
 		) {
 			if (this.shorthand) {
-				code.prependRight(this.start, `${this.key.name}: `);
+				code.prependRight(this.start, `${this.key.name}: ${this.program.inWith ? '_vm.' : ''}`);
 			} else if (this.method) {
 				let name = '';
 				if (this.program.options.namedFunctionExpressions !== false) {
