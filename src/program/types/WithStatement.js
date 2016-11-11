@@ -9,8 +9,7 @@ export default class WithStatement extends Node {
         // remove surrounding with block
         code.remove(this.start, this.body.start + 1)
         code.remove(this.end - 1, this.end)
-        const name = this.findScope(true).createIdentifier('$$vm')
-        code.insertRight(this.start, `var ${name}=this;`)
+        code.insertRight(this.start, `var _vm=this;var _h=_vm._h;var _s=_vm._s;`)
       }
       super.transpile(code, transforms)
       this.program.inWith = false

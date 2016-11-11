@@ -5,7 +5,7 @@ export default class Property extends Node {
 	transpile ( code, transforms ) {
 		if ( transforms.conciseMethodProperty && !this.computed && this.parent.type !== 'ObjectPattern' ) {
 			if ( this.shorthand ) {
-				code.insertRight( this.start, `${this.key.name}: ` );
+				code.insertRight( this.start, `${this.key.name}: ${this.program.inWith ? '_vm.' : ''}` );
 			} else if ( this.method ) {
 				let name = '';
 				if ( this.program.options.namedFunctionExpressions !== false ) {

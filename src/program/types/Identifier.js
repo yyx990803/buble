@@ -45,19 +45,21 @@ export default class Identifier extends Node {
 
 		// rewrite identifiers inside Vue render function `with` blocks
 		if (
-			transforms.stripWith &&
+			this.program.inWith &&
 			// not id of a Declaration
 			!(isDeclaration(this.parent.type) && this.parent.id === this) &&
 			// not a params of a function
 			!(isFunction(this.parent.type) && this.parent.params.indexOf(this) > -1) &&
 			// not a key of Property
-			!(this.parent.type === 'Property' && this.parent.key === this) &&
+			!(this.parent.type === 'Property' && this.parent.key === this && !this.parent.computed) &&
 			// not a property of a MemberExpression
 			!(this.parent.type === 'MemberExpression' && this.parent.property === this) &&
+			// skip commonly used shorthands optimized for access perf
+			!/^(_h|_s)$/.test(this.name) &&
 			// not already in scope
 			!this.findScope(false).contains(this.name)
 		) {
-			code.insertRight(this.start, `$$vm.`)
+			code.insertRight(this.start, `_vm.`)
 		}
 	}
 }
