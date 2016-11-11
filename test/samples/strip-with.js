@@ -21,7 +21,7 @@ function render () {
 `,
     output: `
 function render () {
-  var _vm=this;var _h=_vm._h;var _s=_vm._s;
+  var _vm=this;var _h=_vm._h;
     return _h('div', _vm.items.map(function (item) {
       var _obj;
       return _h('p', {
