@@ -46,7 +46,7 @@ export default class Identifier extends Node {
 
 		// rewrite identifiers inside Vue render function `with` blocks
 		if (
-			this.program.inWith &&
+			this.program.inWith > 0 &&
 			// not id of a Declaration
 			!(isDeclaration(this.parent.type) && this.parent.id === this) &&
 			// not a params of a function

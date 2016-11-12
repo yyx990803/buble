@@ -41,7 +41,7 @@ export default class Property extends Node {
 
 	shouldPrefix () {
 		if (
-			this.program.inWith &&
+			this.program.inWith > 0 &&
 			!globals[this.key.name] &&
 			!this.findScope(false).contains(this.key.name)
 		) {
