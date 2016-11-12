@@ -60,7 +60,7 @@ export default class Identifier extends Node {
 			// not already in scope
 			!this.findScope(false).contains(this.name)
 		) {
-			code.insertRight(this.start, `_vm.`)
+			code.overwrite(this.start, this.end, `_vm.${this.name}`)
 		}
 	}
 }
