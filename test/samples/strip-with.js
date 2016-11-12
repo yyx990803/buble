@@ -13,7 +13,7 @@ function render () {
         class: [a, b + 'c', c ? d : item.e],
         style: { color, item, [prop]: true }
       }, item.tags.map(function (tag) {
-        return _h('span', [item.id, tag.text, foo])
+        return _h('span', [item.id, tag.text, foo, a[b]])
       }))
     }))
 }
@@ -28,7 +28,7 @@ function render () {
         class: [_vm.a, _vm.b + 'c', _vm.c ? _vm.d : item.e],
         style: ( _obj = { color: _vm.color, item: item }, _obj[_vm.prop] = true, _obj )
       }, item.tags.map(function (tag) {
-        return _vm._h('span', [item.id, tag.text, _vm.foo])
+        return _vm._h('span', [item.id, tag.text, _vm.foo, _vm.a[_vm.b]])
       }))
     }))
 
