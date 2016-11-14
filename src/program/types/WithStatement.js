@@ -10,6 +10,8 @@ export default class WithStatement extends Node {
       code.insertRight(this.start, `var _vm=this;`)
       super.transpile(code, transforms)
       this.program.inWith--
+    } else {
+      super.transpile(code, transforms)
     }
   }
 }
