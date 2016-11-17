@@ -114,47 +114,47 @@ module.exports = [
 			}`
 	},
 
-	{
-		description: 'deconflicts with default imports',
-		options: { transforms: { moduleImport: false } },
+	// {
+	// 	description: 'deconflicts with default imports',
+	// 	options: { transforms: { moduleImport: false } },
 
-		input: `
-			import foo from './foo.js';
+	// 	input: `
+	// 		import foo from './foo.js';
 
-			if ( x ) {
-				let foo = 'y';
-				console.log( foo );
-			}`,
+	// 		if ( x ) {
+	// 			let foo = 'y';
+	// 			console.log( foo );
+	// 		}`,
 
-		output: `
-			import foo from './foo.js';
+	// 	output: `
+	// 		import foo from './foo.js';
 
-			if ( x ) {
-				var foo$1 = 'y';
-				console.log( foo$1 );
-			}`
-	},
+	// 		if ( x ) {
+	// 			var foo$1 = 'y';
+	// 			console.log( foo$1 );
+	// 		}`
+	// },
 
-	{
-		description: 'deconflicts with named imports',
-		options: { transforms: { moduleImport: false } },
+	// {
+	// 	description: 'deconflicts with named imports',
+	// 	options: { transforms: { moduleImport: false } },
 
-		input: `
-			import { foo } from './foo.js';
+	// 	input: `
+	// 		import { foo } from './foo.js';
 
-			if ( x ) {
-				let foo = 'y';
-				console.log( foo );
-			}`,
+	// 		if ( x ) {
+	// 			let foo = 'y';
+	// 			console.log( foo );
+	// 		}`,
 
-		output: `
-			import { foo } from './foo.js';
+	// 	output: `
+	// 		import { foo } from './foo.js';
 
-			if ( x ) {
-				var foo$1 = 'y';
-				console.log( foo$1 );
-			}`
-	},
+	// 		if ( x ) {
+	// 			var foo$1 = 'y';
+	// 			console.log( foo$1 );
+	// 		}`
+	// },
 
 	{
 		description: 'deconflicts with function declarations',

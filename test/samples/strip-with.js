@@ -15,7 +15,7 @@ function render () {
         inlineTemplate: {
           render: function () {
             with (this) {
-              return _h('span', 'hi')
+              return _h('span', ['hi', arguments[1]])
 }
           }
         }
@@ -37,7 +37,7 @@ function render () {
         inlineTemplate: {
           render: function () {
             var _vm=this;
-              return _vm._h('span', 'hi')
+              return _vm._h('span', ['hi', arguments[1]])
 
           }
         }

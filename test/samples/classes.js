@@ -226,80 +226,80 @@ module.exports = [
 			}(Bar));`
 	},
 
-	{
-		description: 'transpiles export default class',
-		options: { transforms: { moduleExport: false } },
+	// {
+	// 	description: 'transpiles export default class',
+	// 	options: { transforms: { moduleExport: false } },
 
-		input: `
-			export default class Foo {
-				bar () {}
-			}`,
+	// 	input: `
+	// 		export default class Foo {
+	// 			bar () {}
+	// 		}`,
 
-		output: `
-			var Foo = function Foo () {};
+	// 	output: `
+	// 		var Foo = function Foo () {};
 
-			Foo.prototype.bar = function bar () {};
+	// 		Foo.prototype.bar = function bar () {};
 
-			export default Foo;`
-	},
+	// 		export default Foo;`
+	// },
 
-	{
-		description: 'transpiles export default subclass',
-		options: { transforms: { moduleExport: false } },
+	// {
+	// 	description: 'transpiles export default subclass',
+	// 	options: { transforms: { moduleExport: false } },
 
-		input: `
-			export default class Foo extends Bar {
-				bar () {}
-			}`,
+	// 	input: `
+	// 		export default class Foo extends Bar {
+	// 			bar () {}
+	// 		}`,
 
-		output: `
-			var Foo = (function (Bar) {
-				function Foo () {
-					Bar.apply(this, arguments);
-				}
+	// 	output: `
+	// 		var Foo = (function (Bar) {
+	// 			function Foo () {
+	// 				Bar.apply(this, arguments);
+	// 			}
 
-				if ( Bar ) Foo.__proto__ = Bar;
-				Foo.prototype = Object.create( Bar && Bar.prototype );
-				Foo.prototype.constructor = Foo;
+	// 			if ( Bar ) Foo.__proto__ = Bar;
+	// 			Foo.prototype = Object.create( Bar && Bar.prototype );
+	// 			Foo.prototype.constructor = Foo;
 
-				Foo.prototype.bar = function bar () {};
+	// 			Foo.prototype.bar = function bar () {};
 
-				return Foo;
-			}(Bar));
+	// 			return Foo;
+	// 		}(Bar));
 
-			export default Foo;`
-	},
+	// 		export default Foo;`
+	// },
 
-	{
-		description: 'transpiles export default subclass with subsequent statement',
-		options: { transforms: { moduleExport: false } },
+	// {
+	// 	description: 'transpiles export default subclass with subsequent statement',
+	// 	options: { transforms: { moduleExport: false } },
 
-		input: `
-			export default class Foo extends Bar {
-				bar () {}
-			}
+	// 	input: `
+	// 		export default class Foo extends Bar {
+	// 			bar () {}
+	// 		}
 
-			new Foo().bar();`,
+	// 		new Foo().bar();`,
 
-		output: `
-			var Foo = (function (Bar) {
-				function Foo () {
-					Bar.apply(this, arguments);
-				}
+	// 	output: `
+	// 		var Foo = (function (Bar) {
+	// 			function Foo () {
+	// 				Bar.apply(this, arguments);
+	// 			}
 
-				if ( Bar ) Foo.__proto__ = Bar;
-				Foo.prototype = Object.create( Bar && Bar.prototype );
-				Foo.prototype.constructor = Foo;
+	// 			if ( Bar ) Foo.__proto__ = Bar;
+	// 			Foo.prototype = Object.create( Bar && Bar.prototype );
+	// 			Foo.prototype.constructor = Foo;
 
-				Foo.prototype.bar = function bar () {};
+	// 			Foo.prototype.bar = function bar () {};
 
-				return Foo;
-			}(Bar));
+	// 			return Foo;
+	// 		}(Bar));
 
-			export default Foo;
+	// 		export default Foo;
 
-			new Foo().bar();`
-	},
+	// 		new Foo().bar();`
+	// },
 
 	{
 		description: 'transpiles empty class',
