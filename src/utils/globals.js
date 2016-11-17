@@ -3,7 +3,8 @@
 const names = 'Infinity,undefined,NaN,isFinite,isNaN,' +
   'parseFloat,parseInt,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,' +
   'Math,Number,Date,Array,Object,Boolean,String,RegExp,Map,Set,JSON,Intl,' +
-  'require' // for webpack
+  'require,' + // for webpack
+  'arguments' // parsed as identifier but is a special keyword...
 
 const hash = Object.create(null)
 names.split(',').forEach(name => {
