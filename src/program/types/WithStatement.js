@@ -7,7 +7,7 @@ export default class WithStatement extends Node {
       // remove surrounding with block
       code.remove(this.start, this.body.start + 1)
       code.remove(this.end - 1, this.end)
-      code.insertRight(this.start, `var _vm=this;`)
+      code.insertRight(this.start, `var _vm=this;var _h=_vm._h;`)
       super.transpile(code, transforms)
       this.program.inWith--
     } else {

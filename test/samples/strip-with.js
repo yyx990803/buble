@@ -28,21 +28,21 @@ function render () {
 `,
     output: `
 function render () {
-  var _vm=this;
-    return _vm._h('div', _vm.items.map(function (item) {
+  var _vm=this;var _h=_vm._h;
+    return _h('div', _vm.items.map(function (item) {
       var _obj;
-      return _vm._h('p', {
+      return _h('p', {
         class: [_vm.a, _vm.b + 'c', _vm.c ? _vm.d : item.e],
         style: ( _obj = { color: _vm.color, item: item }, _obj[_vm.prop] = true, _obj ),
         inlineTemplate: {
           render: function () {
-            var _vm=this;
-              return _vm._h('span', ['hi', arguments[1]])
+            var _vm=this;var _h=_vm._h;
+              return _h('span', ['hi', arguments[1]])
 
           }
         }
       }, item.tags.map(function (tag) {
-        return _vm._h('span', [item.id, tag.text, _vm.foo, _vm.a[_vm.b]])
+        return _h('span', [item.id, tag.text, _vm.foo, _vm.a[_vm.b]])
       }))
     }))
 
