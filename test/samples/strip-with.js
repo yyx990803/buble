@@ -20,7 +20,7 @@ function render () {
           }
         }
       }, item.tags.map(function (tag) {
-        return _h('span', [item.id, tag.text, foo, a[b]])
+        return _c('span', [item.id, tag.text, foo, a[b]])
       }))
     }))
 }
@@ -28,7 +28,7 @@ function render () {
 `,
     output: `
 function render () {
-  var _vm=this;var _h=_vm._c||_vm.$createElement;
+  var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
     return _h('div', _vm.items.map(function (item) {
       var _obj;
       return _h('p', {
@@ -36,13 +36,13 @@ function render () {
         style: ( _obj = { color: _vm.color, item: item }, _obj[_vm.prop] = true, _obj ),
         inlineTemplate: {
           render: function () {
-            var _vm=this;var _h=_vm._c||_vm.$createElement;
+            var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
               return _h('span', ['hi', arguments[1]])
 
           }
         }
       }, item.tags.map(function (tag) {
-        return _h('span', [item.id, tag.text, _vm.foo, _vm.a[_vm.b]])
+        return _c('span', [item.id, tag.text, _vm.foo, _vm.a[_vm.b]])
       }))
     }))
 
