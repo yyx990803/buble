@@ -28,7 +28,7 @@ function render () {
 `,
     output: `
 function render () {
-  var _vm=this;var _h=_vm.$createElement;var _c=_vm._c||_h;
+  var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
     return _h('div', _vm.items.map(function (item) {
       var _obj;
       return _h('p', {
@@ -36,7 +36,7 @@ function render () {
         style: ( _obj = { color: _vm.color, item: item }, _obj[_vm.prop] = true, _obj ),
         inlineTemplate: {
           render: function () {
-            var _vm=this;var _h=_vm.$createElement;var _c=_vm._c||_h;
+            var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
               return _h('span', ['hi', arguments[1]])
 
           }
