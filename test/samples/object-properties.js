@@ -102,11 +102,11 @@ module.exports = [
 		`,
 		output: `
 			if (1)
-				{ var _obj;
-					console.log(JSON.stringify(( _obj = {}, _obj['com'+'puted'] = 1, _obj['foo'] = 2, _obj ))); }
+				{ console.log(JSON.stringify(( _obj = {}, _obj['com'+'puted'] = 1, _obj['foo'] = 2, _obj )));
+					var _obj; }
 			else
-				{ var _obj$1;
-			console.log(JSON.stringify(( _obj$1 = {}, _obj$1['bar'] = 3, _obj$1 ))); }
+				{ console.log(JSON.stringify(( _obj$1 = {}, _obj$1['bar'] = 3, _obj$1 )));
+			var _obj$1; }
 		`
 	},
 
