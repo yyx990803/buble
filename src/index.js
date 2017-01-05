@@ -58,6 +58,12 @@ export function transform ( source, options = {} ) {
 		transforms[ name ] = options.transforms[ name ];
 	});
 
+	if (transforms.stripWith) {
+		// necessary for { key } to be prefixed properly
+		// in case the user uses a target environment that supports this
+		transforms.conciseMethodProperty = true
+	}
+
 	let ast;
 	let jsx = null;
 
