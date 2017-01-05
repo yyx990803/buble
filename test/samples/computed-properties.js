@@ -170,6 +170,7 @@ module.exports = [
 
 		output: `
 <<<<<<< HEAD
+<<<<<<< HEAD
 			var obj;
 
 			call(( obj = {}, obj[a] = 5, obj ));`
@@ -177,6 +178,10 @@ module.exports = [
 			var _obj;
 			call(( _obj = {}, _obj[a] = 5, _obj ));`
 >>>>>>> rename obj to _obj for computed properties
+=======
+			call(( _obj = {}, _obj[a] = 5, _obj ));
+			var _obj;`
+>>>>>>> fix tests
 	},
 
 	{
@@ -264,6 +269,7 @@ module.exports = [
 			foo => bar({[x - y]: obj});
 		`,
 		output: `
+<<<<<<< HEAD
 			!function(foo) {
 				var obj$1;
 
@@ -282,6 +288,10 @@ module.exports = [
 			(function () {
 			var obj, obj$1;
  return ( obj$1 = {}, obj$1[key] = ( obj = {}, obj[key] = val, obj ), obj$1 ) })
+=======
+			(function(foo) { return bar(( _obj = {}, _obj[x - y] = obj, _obj ))
+				var _obj;; });
+>>>>>>> fix tests
 		`
 	},
 

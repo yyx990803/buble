@@ -112,21 +112,21 @@ module.exports = [
 			f12({ ...b, [c]:3, d:4 });
 		`,
 		output: `
-			var obj, obj$1, obj$2, obj$3, obj$4, obj$5, obj$6, obj$7, obj$8, obj$9, obj$10, obj$11, obj$12;
+			var _obj, _obj$1, _obj$2, _obj$3, _obj$4, _obj$5, _obj$6, _obj$7, _obj$8, _obj$9, _obj$10, _obj$11, _obj$12;
 
-			f0( Object.assign(( obj = {}, obj[ x ] = true, obj ), y) );
-			f1( Object.assign(( obj$1 = {}, obj$1[ w ] = 0, obj$1[ x ] = true, obj$1 ), y) );
-			f2( Object.assign(( obj$2 = { v: v }, obj$2[ w ] = 0, obj$2[ x ] = true, obj$2 ), y) );
-			f3( ( obj$3 = {}, obj$3[ w ] = 0, obj$3[ x ] = true, obj$3 ) );
-			f4( ( obj$4 = {}, obj$4[ w ] = 0, obj$4[ x ] = true, obj$4.y = y, obj$4 ) );
-			f5( Object.assign(( obj$5 = { k : 9 }, obj$5[ x ] = true, obj$5 ), y) );
-			f6( Object.assign({}, y, ( obj$6 = {}, obj$6[ x ] = true, obj$6 )) );
-			f7( Object.assign({}, y, ( obj$7 = {}, obj$7[ w ] = 0, obj$7[ x ] = true, obj$7 )) );
-			f8( Object.assign({ k : 9 }, y, ( obj$8 = {}, obj$8[ x ] = true, obj$8 )) );
-			f9( ( obj$9 = {}, obj$9[ x ] = true, obj$9[ y ] = false, obj$9[ z ] = 9, obj$9 ) );
-			f10( Object.assign(( obj$10 = {}, obj$10[ x ] = true, obj$10 ), y, {p: p}, q) );
-			f11( ( obj$11 = { x: x }, obj$11[c] = 9, obj$11.y = y, obj$11 ) );
-			f12(Object.assign({}, b, ( obj$12 = {}, obj$12[c] = 3, obj$12 ), {d:4}));
+			f0( Object.assign(( _obj = {}, _obj[ x ] = true, _obj ), y) );
+			f1( Object.assign(( _obj$1 = {}, _obj$1[ w ] = 0, _obj$1[ x ] = true, _obj$1 ), y) );
+			f2( Object.assign(( _obj$2 = { v: v }, _obj$2[ w ] = 0, _obj$2[ x ] = true, _obj$2 ), y) );
+			f3( ( _obj$3 = {}, _obj$3[ w ] = 0, _obj$3[ x ] = true, _obj$3 ) );
+			f4( ( _obj$4 = {}, _obj$4[ w ] = 0, _obj$4[ x ] = true, _obj$4.y = y, _obj$4 ) );
+			f5( Object.assign(( _obj$5 = { k : 9 }, _obj$5[ x ] = true, _obj$5 ), y) );
+			f6( Object.assign({}, y, ( _obj$6 = {}, _obj$6[ x ] = true, _obj$6 )) );
+			f7( Object.assign({}, y, ( _obj$7 = {}, _obj$7[ w ] = 0, _obj$7[ x ] = true, _obj$7 )) );
+			f8( Object.assign({ k : 9 }, y, ( _obj$8 = {}, _obj$8[ x ] = true, _obj$8 )) );
+			f9( ( _obj$9 = {}, _obj$9[ x ] = true, _obj$9[ y ] = false, _obj$9[ z ] = 9, _obj$9 ) );
+			f10( Object.assign(( _obj$10 = {}, _obj$10[ x ] = true, _obj$10 ), y, {p: p}, q) );
+			f11( ( _obj$11 = { x: x }, _obj$11[c] = 9, _obj$11.y = y, _obj$11 ) );
+			f12(Object.assign({}, b, ( _obj$12 = {}, _obj$12[c] = 3, _obj$12 ), {d:4}));
 		`
 	},
 
