@@ -21,6 +21,8 @@ function render () {
         }
       }, item.tags.map(function (tag) {
         return _c('span', [item.id, tag.text, foo, a[b]])
+      }), item.stuff.map(([a, b]) => {
+        return _h('p', [a, b])
       }))
     }))
 }
@@ -42,6 +44,11 @@ function render () {
         }
       }, item.tags.map(function (tag) {
         return _c('span', [item.id, tag.text, _vm.foo, _vm.a[_vm.b]])
+      }), item.stuff.map(function (ref) {
+        var a = ref[0];
+        var b = ref[1];
+
+        return _h('p', [a, b])
       }))
       var _obj;
     }))
