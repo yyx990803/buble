@@ -55,6 +55,8 @@ export default class Identifier extends Node {
 			!(this.parent.type === 'Property' && this.parent.key === this && !this.parent.computed) &&
 			// not a property of a MemberExpression
 			!(this.parent.type === 'MemberExpression' && this.parent.property === this && !this.parent.computed) &&
+			// not in an Array destructure pattern
+			!(this.parent.type === 'ArrayPattern') &&
 			// skip globals + commonly used shorthands
 			!globals[this.name] &&
 			// not already in scope
