@@ -28,17 +28,17 @@ const config = {
 
 export default [
 	/* ESM/UMD builds */
-	Object.assign({}, config, {
-		external: ['acorn/dist/acorn.js', 'magic-string'],
-		output: [
-			{ format: 'es', file: pkg.module },
-			{ format: 'umd', file: pkg.main }
-		],
-		globals: {
-			'acorn/dist/acorn.js': 'acorn',
-			'magic-string': 'MagicString'
-		}
-	}),
+	// Object.assign({}, config, {
+	// 	external: ['acorn/dist/acorn.js', 'magic-string'],
+	// 	output: [
+	// 		{ format: 'es', file: pkg.module },
+	// 		{ format: 'umd', file: pkg.main }
+	// 	],
+	// 	globals: {
+	// 		'acorn/dist/acorn.js': 'acorn',
+	// 		'magic-string': 'MagicString'
+	// 	}
+	// }),
 
 	/* UMD with bundled dependencies, for browsers */
 	Object.assign({}, config, {
