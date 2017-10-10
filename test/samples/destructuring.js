@@ -701,12 +701,12 @@ module.exports = [
 			] = [ "ok" ];
 		`,
 		output: `
-			var obj;
+			var _obj;
 
 			var ref = [ "ok" ];
 			var a = ref[0]; if ( a === void 0 ) a = "A" + (baz() - 4);
 			var c = ref[2]; if ( c === void 0 ) c = (function (x) { return -x; });
-			var d = ref[3]; if ( d === void 0 ) d = (( obj = { r: 5 }, obj[h()] = i, obj ));
+			var d = ref[3]; if ( d === void 0 ) d = (( _obj = { r: 5 }, _obj[h()] = i, _obj ));
 		`
 	},
 
@@ -722,12 +722,12 @@ module.exports = [
 			} = { b: 3 };
 		`,
 		output: `
-			var obj;
+			var _obj;
 
 			var ref = { b: 3 };
 			var a = ref.a; if ( a === void 0 ) a = "A" + (baz() - 4);
 			var c = ref.c; if ( c === void 0 ) c = (function (x) { return -x; });
-			var d = ref.d; if ( d === void 0 ) d = (( obj = { r: 5 }, obj[1 + 1] = 2, obj[h()] = i, obj ));
+			var d = ref.d; if ( d === void 0 ) d = (( _obj = { r: 5 }, _obj[1 + 1] = 2, _obj[h()] = i, _obj ));
 		`
 	},
 
