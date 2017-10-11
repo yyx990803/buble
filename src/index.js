@@ -42,6 +42,7 @@ export function target ( target ) {
 	});
 
 	transforms.stripWith = false
+	transforms.stripWithFunctional = false
 	return transforms;
 }
 
