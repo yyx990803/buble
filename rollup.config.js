@@ -39,11 +39,9 @@ export default [
 	// 		'magic-string': 'MagicString'
 	// 	}
 	// }),
-
-	/* UMD with bundled dependencies, for browsers */
 	Object.assign({}, config, {
 		output: [
-			{ format: 'umd', file: pkg.browser }
+			{ format: 'umd', file: pkg.main }
 		]
 	})
 ];
