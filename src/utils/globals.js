@@ -3,6 +3,7 @@
 const names = 'Infinity,undefined,NaN,isFinite,isNaN,' +
   'parseFloat,parseInt,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,' +
   'Math,Number,Date,Array,Object,Boolean,String,RegExp,Map,Set,JSON,Intl,' +
+  'process,' + // allow to use variables from `.env` file in templates (webpack define plugin)
   'require,' + // for webpack
   'arguments,' + // parsed as identifier but is a special keyword...
   '_h,_c' // cached to save property access (_c for ^2.1.5)
