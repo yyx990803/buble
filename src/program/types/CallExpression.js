@@ -1,6 +1,7 @@
 import Node from '../Node.js';
 import spread, { isArguments } from '../../utils/spread.js';
 import removeTrailingComma from '../../utils/removeTrailingComma.js';
+import { shouldPrependVm } from '../../utils/prependVm.js';
 
 export default class CallExpression extends Node {
 	initialise(transforms) {
@@ -53,9 +54,10 @@ export default class CallExpression extends Node {
 					_super = this.callee.object;
 				}
 
-				if (!_super && this.callee.type === 'MemberExpression') {
-					if (this.callee.object.type === 'Identifier') {
-						context = this.callee.object.name;
+				if ( !_super && this.callee.type === 'MemberExpression' ) {
+					if ( this.callee.object.type === 'Identifier' ) {
+						const callee = this.callee.object;
+						context = shouldPrependVm(callee) ? `_vm.${callee.name}` : callee.name;
 					} else {
 						context = this.findScope(true).createDeclaration('ref');
 						const callExpression = this.callee.object;

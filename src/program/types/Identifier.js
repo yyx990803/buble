@@ -1,10 +1,7 @@
 import Node from '../Node.js';
 import isReference from '../../utils/isReference.js';
 import { loopStatement } from '../../utils/patterns.js';
-import globals from '../../utils/globals.js';
-
-const isDeclaration = type => /Declaration$/.test(type)
-const isFunction = type => /Function(Expression|Declaration)$/.test(type)
+import { shouldPrependVm } from '../../utils/prependVm.js';
 
 export default class Identifier extends Node {
 	findScope(functionScope) {
@@ -55,27 +52,8 @@ export default class Identifier extends Node {
 			});
 		}
 
-		// rewrite identifiers inside Vue render function `with` blocks
-		if (
-			this.program.inWith > 0 &&
-			// not id of a Declaration
-			!(isDeclaration(this.parent.type) && this.parent.id === this) &&
-			// not a params of a function
-			!(isFunction(this.parent.type) && this.parent.params.indexOf(this) > -1) &&
-			// not a key of Property
-			!(this.parent.type === 'Property' && this.parent.key === this && !this.parent.computed) &&
-			// not a property of a MemberExpression
-			!(this.parent.type === 'MemberExpression' && this.parent.property === this && !this.parent.computed) &&
-			// not in an Array destructure pattern
-			!(this.parent.type === 'ArrayPattern') &&
-			// not in an Object destructure pattern
-			!(this.parent.parent.type === 'ObjectPattern') &&
-			// skip globals + commonly used shorthands
-			!globals[this.name] &&
-			// not already in scope
-			!this.findScope(false).contains(this.name)
-		) {
-			code.overwrite(this.start, this.end, `_vm.${this.name}`)
+		if (shouldPrependVm(this)) {
+			code.overwrite(this.start, this.end, `_vm.${this.name}`);
 		}
 	}
 }
