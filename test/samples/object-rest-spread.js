@@ -62,11 +62,11 @@ module.exports = [
 			var a12 = { ...b, [c]:3, d:4 };
 		`,
 		output: `
-			var obj, obj$1, obj$2, obj$3, obj$4, obj$5, obj$6, obj$7, obj$8;
+			var _obj, _obj$1, _obj$2, _obj$3, _obj$4, _obj$5, _obj$6, _obj$7, _obj$8;
 
-			var a0 = Object.assign(( obj = {}, obj[ x ] = true, obj ), y);
-			var a1 = Object.assign(( obj$1 = {}, obj$1[ w ] = 0, obj$1[ x ] = true, obj$1 ), y);
-			var a2 = Object.assign(( obj$2 = { v: v }, obj$2[ w ] = 0, obj$2[ x ] = true, obj$2 ), y);
+			var a0 = Object.assign(( _obj = {}, _obj[ x ] = true, _obj ), y);
+			var a1 = Object.assign(( _obj$1 = {}, _obj$1[ w ] = 0, _obj$1[ x ] = true, _obj$1 ), y);
+			var a2 = Object.assign(( _obj$2 = { v: v }, _obj$2[ w ] = 0, _obj$2[ x ] = true, _obj$2 ), y);
 			var a3 = {};
 			a3[ w ] = 0;
 			a3[ x ] = true;
@@ -74,19 +74,19 @@ module.exports = [
 			a4[ w ] = 0;
 			a4[ x ] = true;
 			a4.y = y;
-			var a5 = Object.assign(( obj$3 = { k : 9 }, obj$3[ x ] = true, obj$3 ), y);
-			var a6 = Object.assign({}, y, ( obj$4 = {}, obj$4[ x ] = true, obj$4 ));
-			var a7 = Object.assign({}, y, ( obj$5 = {}, obj$5[ w ] = 0, obj$5[ x ] = true, obj$5 ));
-			var a8 = Object.assign({ k : 9 }, y, ( obj$6 = {}, obj$6[ x ] = true, obj$6 ));
+			var a5 = Object.assign(( _obj$3 = { k : 9 }, _obj$3[ x ] = true, _obj$3 ), y);
+			var a6 = Object.assign({}, y, ( _obj$4 = {}, _obj$4[ x ] = true, _obj$4 ));
+			var a7 = Object.assign({}, y, ( _obj$5 = {}, _obj$5[ w ] = 0, _obj$5[ x ] = true, _obj$5 ));
+			var a8 = Object.assign({ k : 9 }, y, ( _obj$6 = {}, _obj$6[ x ] = true, _obj$6 ));
 			var a9 = {};
 			a9[ x ] = true;
 			a9[ y ] = false;
 			a9[ z ] = 9;
-			var a10 = Object.assign(( obj$7 = {}, obj$7[ x ] = true, obj$7 ), y, {p: p}, q);
+			var a10 = Object.assign(( _obj$7 = {}, _obj$7[ x ] = true, _obj$7 ), y, {p: p}, q);
 			var a11 = { x: x };
 			a11[c] = 9;
 			a11.y = y;
-			var a12 = Object.assign({}, b, ( obj$8 = {}, obj$8[c] = 3, obj$8 ), {d:4});
+			var a12 = Object.assign({}, b, ( _obj$8 = {}, _obj$8[c] = 3, _obj$8 ), {d:4});
 		`
 	},
 

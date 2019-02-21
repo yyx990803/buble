@@ -797,9 +797,9 @@ module.exports = [
 		`,
 
 		output: `
-			var obj;
+			var _obj;
 
-			var ref = ( obj = {}, obj['a'] = 1, obj );
+			var ref = ( _obj = {}, _obj['a'] = 1, _obj );
 			var a = ref.a;
 			var b = ref.b;
 		`

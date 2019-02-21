@@ -154,7 +154,7 @@ export default class ObjectExpression extends Node {
 					lastComputedProp = prop;
 
 					if (!name) {
-						name = this.findScope(true).createDeclaration('obj');
+						name = this.findScope(true).createDeclaration('_obj');
 
 						const propId = name + (prop.computed ? '' : '.');
 						code.appendRight(prop.start, `( ${name} = {}, ${propId}`);

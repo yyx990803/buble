@@ -120,9 +120,9 @@ module.exports = [
 			fn({['computed']:1, 'some-var':2, a: 3});
 		`,
 		output: `
-			var obj;
+			var _obj;
 
-			fn(( obj = {}, obj['computed'] = 1, obj['some-var'] = 2, obj.a = 3, obj ));
+			fn(( _obj = {}, _obj['computed'] = 1, _obj['some-var'] = 2, _obj.a = 3, _obj ));
 		`
 	},
 

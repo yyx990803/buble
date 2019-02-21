@@ -136,9 +136,9 @@ module.exports = [
 			var a = 'foo', obj = { [a]: 'bar', x: 42 }, bar = obj.foo;`,
 
 		output: `
-			var _obj$1;
+			var _obj;
 
-			var a = 'foo', obj = ( _obj$1 = {}, _obj$1[a] = 'bar', _obj$1.x = 42, _obj$1 ), bar = obj.foo;`
+			var a = 'foo', obj = ( _obj = {}, _obj[a] = 'bar', _obj.x = 42, _obj ), bar = obj.foo;`
 	},
 
 	{
@@ -169,19 +169,9 @@ module.exports = [
 			call({ [a]: 5 });`,
 
 		output: `
-<<<<<<< HEAD
-<<<<<<< HEAD
-			var obj;
-
-			call(( obj = {}, obj[a] = 5, obj ));`
-=======
 			var _obj;
+
 			call(( _obj = {}, _obj[a] = 5, _obj ));`
->>>>>>> rename obj to _obj for computed properties
-=======
-			call(( _obj = {}, _obj[a] = 5, _obj ));
-			var _obj;`
->>>>>>> fix tests
 	},
 
 	{
@@ -269,11 +259,10 @@ module.exports = [
 			foo => bar({[x - y]: obj});
 		`,
 		output: `
-<<<<<<< HEAD
 			!function(foo) {
-				var obj$1;
+				var _obj;
 
-				return bar(( obj$1 = {}, obj$1[x - y] = obj, obj$1 ));
+				return bar(( _obj = {}, _obj[x - y] = obj, _obj ));
 			};
 		`
 	},
@@ -286,12 +275,8 @@ module.exports = [
 		`,
 		output: `
 			(function () {
-			var obj, obj$1;
- return ( obj$1 = {}, obj$1[key] = ( obj = {}, obj[key] = val, obj ), obj$1 ) })
-=======
-			(function(foo) { return bar(( _obj = {}, _obj[x - y] = obj, _obj ))
-				var _obj;; });
->>>>>>> fix tests
+			var _obj, _obj$1;
+ return ( _obj$1 = {}, _obj$1[key] = ( _obj = {}, _obj[key] = val, _obj ), _obj$1 ) })
 		`
 	},
 
@@ -303,8 +288,8 @@ module.exports = [
 		`,
 		output: `
 			(function (x) {
-			var obj$1;
-var obj = 2; console.log([( obj$1 = {}, obj$1[x] = 1, obj$1 ), obj]);})(3);
+			var _obj;
+var obj = 2; console.log([( _obj = {}, _obj[x] = 1, _obj ), obj]);})(3);
 		`
 	}
 ];
