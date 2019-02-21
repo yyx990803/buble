@@ -8,9 +8,9 @@ export default class WithStatement extends Node {
       code.remove(this.start, this.body.start + 1)
       code.remove(this.end - 1, this.end)
       if (transforms.stripWithFunctional) {
-        code.insertRight(this.start, "var _c=_vm._c;")
+        code.prependRight(this.start, "var _c=_vm._c;")
       } else {
-        code.insertRight(this.start, `var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;`)
+        code.prependRight(this.start, `var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;`)
       }
       super.transpile(code, transforms)
       this.program.inWith--
