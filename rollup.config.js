@@ -12,7 +12,6 @@ const createConfig = (opts) => {
 	const external = opts.external || ['acorn', 'magic-string'];
 	const output = ensureArray(opts.output);
 
-<<<<<<< HEAD
 	return {
 		input: 'src/index.js',
 		output: output.map(format => Object.assign({}, format, {
@@ -62,26 +61,6 @@ const configs = [
 		external: [],
 		output: { format: 'umd', file: pkg.unpkg },
 	}),
-=======
-export default [
-	/* ESM/UMD builds */
-	// Object.assign({}, config, {
-	// 	external: ['acorn/dist/acorn.js', 'magic-string'],
-	// 	output: [
-	// 		{ format: 'es', file: pkg.module },
-	// 		{ format: 'umd', file: pkg.main }
-	// 	],
-	// 	globals: {
-	// 		'acorn/dist/acorn.js': 'acorn',
-	// 		'magic-string': 'MagicString'
-	// 	}
-	// }),
-	Object.assign({}, config, {
-		output: [
-			{ format: 'umd', file: pkg.main }
-		]
-	})
->>>>>>> fix build
 ];
 
 export default configs;
