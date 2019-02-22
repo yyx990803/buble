@@ -57,5 +57,24 @@ function render () {
 
 }
 `
+  },
+  {
+    description: 'strip with w/ single line if',
+    options: {
+      transforms: { stripWith: true },
+      objectAssign: 'Object.assign'
+    },
+    input: `
+function render() {
+  with(this){
+    if (true) return;text;}
+}
+`,
+    output: `
+function render() {
+  var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+    if (true) { return; }_vm.text;
+}
+`
   }
 ]
