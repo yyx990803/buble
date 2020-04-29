@@ -50,6 +50,7 @@ export function target(target) {
 
 	transforms.stripWith = false
 	transforms.stripWithFunctional = false
+  transforms.allowedGlobals = []
 	return transforms;
 }
 
