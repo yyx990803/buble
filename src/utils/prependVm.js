@@ -3,7 +3,7 @@ import globals from './globals.js';
 const isDeclaration = type => /Declaration$/.test(type);
 const isFunction = type => /Function(Expression|Declaration)$/.test(type);
 
-export function shouldPrependVm (identifier) {
+export function shouldPrependVm (identifier, allowedGlobals) {
 	if (
 		identifier.program.inWith > 0 &&
 		// not id of a Declaration
@@ -20,6 +20,8 @@ export function shouldPrependVm (identifier) {
 		!(identifier.parent.parent.type === 'ObjectPattern') &&
 		// skip globals + commonly used shorthands
 		!globals[identifier.name] &&
+		// skip customized allowed globals
+		!allowedGlobals.includes(identifier.name) &&
 		// not already in scope
 		!identifier.findScope(false).contains(identifier.name)
 	) {

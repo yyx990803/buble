@@ -44,7 +44,7 @@ export default class Identifier extends Node {
 		}
 	}
 
-	transpile(code) {
+	transpile(code, transforms) {
 		if (this.alias) {
 			code.overwrite(this.start, this.end, this.alias, {
 				storeName: true,
@@ -52,7 +52,7 @@ export default class Identifier extends Node {
 			});
 		}
 
-		if (shouldPrependVm(this)) {
+		if (shouldPrependVm(this, transforms.allowedGlobals)) {
 			code.overwrite(this.start, this.end, `_vm.${this.name}`, {
 				storeName: true,
 				contentOnly: true

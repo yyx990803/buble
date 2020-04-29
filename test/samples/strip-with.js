@@ -76,5 +76,56 @@ function render() {
     if (true) { return; }_vm.text;
 }
 `
+  },
+
+  {
+    description: 'strip with and allowedGlobals',
+    options: {
+      transforms: {
+        stripWith: true,
+        allowedGlobals: ['gmsg', 'gobj', 'garr', 'gidx']
+      },
+      objectAssign: 'Object.assign'
+    },
+    input: `
+function render() {
+  with(this) {
+    return _c('div', [
+      _c('div', [
+        _c('b', [msg]),
+        _c('b', [obj.prop]),
+        _c('b', [obj.method()]),
+        _c('b', [arr[idx]])
+      ]),
+      _c('div', [
+        _c('b', [gmsg]),
+        _c('b', [gobj.prop]),
+        _c('b', [gobj.method()]),
+        _c('b', [garr[gidx]])
+      ])
+    ])
+  }
+}
+`,
+    output: `
+function render() {
+  var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+    return _c('div', [
+      _c('div', [
+        _c('b', [_vm.msg]),
+        _c('b', [_vm.obj.prop]),
+        _c('b', [_vm.obj.method()]),
+        _c('b', [_vm.arr[_vm.idx]])
+      ]),
+      _c('div', [
+        _c('b', [gmsg]),
+        _c('b', [gobj.prop]),
+        _c('b', [gobj.method()]),
+        _c('b', [garr[gidx]])
+      ])
+    ])
+  
+}
+`
   }
 ]

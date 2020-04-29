@@ -57,7 +57,7 @@ export default class CallExpression extends Node {
 				if ( !_super && this.callee.type === 'MemberExpression' ) {
 					if ( this.callee.object.type === 'Identifier' ) {
 						const callee = this.callee.object;
-						context = shouldPrependVm(callee) ? `_vm.${callee.name}` : callee.name;
+						context = shouldPrependVm(callee, transforms.allowedGlobals) ? `_vm.${callee.name}` : callee.name;
 					} else {
 						context = this.findScope(true).createDeclaration('ref');
 						const callExpression = this.callee.object;

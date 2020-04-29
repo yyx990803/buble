@@ -12,7 +12,8 @@ export default class Property extends Node {
 			this.parent.type !== 'ObjectPattern'
 		) {
 			if (this.shorthand) {
-				code.prependRight(this.start, `${this.key.name}: ${this.shouldPrefix() ? '_vm.' : ''}`);
+        const value = this.shouldPrefix(transforms.allowedGlobals) ? '_vm.' : ''
+				code.prependRight(this.start, `${this.key.name}: ${value}`);
 			} else if (this.method) {
 				let name = '';
 				if (this.program.options.namedFunctionExpressions !== false) {
@@ -51,11 +52,13 @@ export default class Property extends Node {
 		}
 	}
 
-	shouldPrefix () {
+	shouldPrefix (allowedGlobals) {
+    const keyName = this.key.name
 		if (
 			this.program.inWith > 0 &&
-			!globals[this.key.name] &&
-			!this.findScope(false).contains(this.key.name)
+			!globals[keyName] &&
+      !allowedGlobals.includes(keyName) &&
+			!this.findScope(false).contains(keyName)
 		) {
 			return true
 		}
