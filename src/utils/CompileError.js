@@ -21,6 +21,7 @@ export default class CompileError extends Error {
 		);
 
 		this.loc = loc;
+		this.source = source;
 		this.snippet = getSnippet(source, loc, node.end - node.start);
 	}
 
